@@ -16,17 +16,22 @@ let apiKey = process.argv[3]
 let apiSecret = process.argv[4]
 let coin = process.argv[5]
 
-// balances
+// Build Query String
+function buildQuery (data) {
+  return Object.keys(data).reduce(function (a, k) {
+    a.push(k + '=' + encodeURIComponent(data[k]))
+    return a
+  }, []).join('&')
+}
+
+// Account
 function getAccount (apiKey, apiSecret, data = {}) {
   if (!apiKey || !apiSecret) {
     throw new Error('You need to pass an API key and secret to make authenticated calls.')
   }
   data.timestamp = new Date().getTime() + binanceData.timeOffset
   if (typeof data.recvWindow === 'undefined') data.recvWindow = binanceData.recvWindow
-  let query = Object.keys(data).reduce(function (a, k) {
-    a.push(k + '=' + encodeURIComponent(data[k]))
-    return a
-  }, []).join('&')
+  let query = buildQuery(data)
   let signature = crypto.createHmac('sha256', apiSecret).update(query).digest('hex')
   let url = binanceData.baseUrl + binanceData.getAccountData + '?' + query + '&signature=' + signature
   request
@@ -50,10 +55,7 @@ function getAllOrders (apiKey, apiSecret, coin, data = {}) {
   data.timestamp = new Date().getTime() + binanceData.timeOffset
   data.symbol = coin
   if (typeof data.recvWindow === 'undefined') data.recvWindow = binanceData.recvWindow
-  let query = Object.keys(data).reduce(function (a, k) {
-    a.push(k + '=' + encodeURIComponent(data[k]))
-    return a
-  }, []).join('&')
+  let query = buildQuery(data)
   let signature = crypto.createHmac('sha256', apiSecret).update(query).digest('hex')
   let url = binanceData.baseUrl + binanceData.getAllOrders + '?' + query + '&signature=' + signature
   request
@@ -77,10 +79,7 @@ function getTrades (apiKey, apiSecret, coin, data = {}) {
   data.timestamp = new Date().getTime() + binanceData.timeOffset
   data.symbol = coin
   if (typeof data.recvWindow === 'undefined') data.recvWindow = binanceData.recvWindow
-  let query = Object.keys(data).reduce(function (a, k) {
-    a.push(k + '=' + encodeURIComponent(data[k]))
-    return a
-  }, []).join('&')
+  let query = buildQuery(data)
   let signature = crypto.createHmac('sha256', apiSecret).update(query).digest('hex')
   let url = binanceData.baseUrl + binanceData.getTrades + '?' + query + '&signature=' + signature
   request
