@@ -1,8 +1,6 @@
 const request = require('superagent')
 const crypto = require('crypto')
 
-const calculateSign = require('./calculateSign')
-
 const binanceData = {
   name: 'binance',
   timeOffset: 0,

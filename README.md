@@ -17,14 +17,14 @@ To Run Each command:
 either 'yarn' or 'npm run' followed by: 
 
 
-## Withdrawals 
+## Account 
 
-withdrawals YOUR_API_KEY YOUR_API_SECRET 
+account YOUR_API_KEY YOUR_API_SECRET 
 
-## Balance 
+## Orders 
 
-balance YOUR_API_KEY YOUR_API_SECRET coin(ETH or BTC)
+orders YOUR_API_KEY YOUR_API_SECRET Symbol (ETHBTC etc)
 
-## Deposits 
+## Trades 
 
-deposits YOUR_API_KEY YOUR_API_SECRET 
+trades YOUR_API_KEY YOUR_API_SECRET Symbol (ETHBTC etc)
