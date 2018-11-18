@@ -1,0 +1,38 @@
+{
+  "name": "react-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bittrex.js",
+  "repository": "https://github.com/Timothy-Tolley/react-template.git",
+  "author": "timothy-tolley <timothytolley@outlook.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "account": "node binance.js account",
+    "orders": "node binance.js orders",
+    "trades": "node binance.js trades"
+  },
+  "engines": {
+    "node": "^10.11.0",
+    "yarn": ">= 0.18.0"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react",
+      "stage-3"
+    ]
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "express": "^4.16.3",
+    "node": "^10.7.0",
+    "superagent": "^4.0.0-beta.5"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
